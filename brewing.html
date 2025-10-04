@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brewing Equipment - Bean Boutique</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body>
+
+  <header>
+  <!-- Logo -->
+  <div class="logo">
+    <img src="image/logo8.png" alt="Bean Boutique Logo">
+    <span>Bean Boutique</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="coffee.html">Coffee Selection</a></li>
+    <li><a href="akkas.html" class="active">Brewing Equipment</a></li>
+    <li><a href="cart.html">Cart</a></li>
+    <li><a href="event.html">Events & Workshops</a></li>
+    <li><a href="offers.html">Special Offers</a></li>
+    <li><a href="profile.html">Profile</a></li>
+  </ul>
+</nav>
+
+
+  <!-- Authentication Buttons -->
+  <div class="auth-buttons" id="authButtons">
+    <button class="auth-btn login-btn" onclick="openLoginModal()">Login</button>
+    <button class="auth-btn signup-btn" onclick="openSignupModal()">Sign Up</button>
+  </div>
+
+  <!-- User Info (hidden by default) -->
+  <div class="user-info hidden" id="userInfo">
+    <span id="welcomeMessage">Welcome, User!</span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Hamburger Menu (Mobile) -->
+  <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+ </header>
+
+  <!-- Site Announcements Ticker -->
+  <div class="site-ticker" role="region" aria-label="Site announcements">
+    <div class="ticker-inner">
+      <div class="ticker-content">
+        <span class="ticker-seq">🔧 Brew like a pro — espresso machines, pour-overs, grinders and more. | 💡 Usage tips on each product to perfect your cup.</span>
+        <span class="ticker-seq">🔧 Brew like a pro — espresso machines, pour-overs, grinders and more. | 💡 Usage tips on each product to perfect your cup.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Title with Image -->
+  <section class="page-title">
+    <div class="title-content">
+      <h2>Brewing Equipment</h2>
+      <p>Discover our carefully selected range of brewing equipment — from espresso machines to French presses — complete with usage tips to help you brew the perfect cup.</p>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" id="searchBox" placeholder="Search brewing equipment...">
+  </div>
+
+  <!-- Equipment Catalogue -->
+  <section class="catalogue" id="equipment-catalogue">
+
+    <!-- Product 1 -->
+    <div class="product">
+      <a href="image/Profitec-GO-Espresso-Machine_20250418-052952_full.jpeg" data-lightbox="equipment" data-title="Espresso Machine - A professional-grade espresso machine for rich and bold coffee at home."><img src="image/Profitec-GO-Espresso-Machine_20250418-052952_full.jpeg" alt="Espresso Machine"></a>
+      <h3>Espresso Machine</h3>
+      <p class="description">A professional-grade espresso machine for rich and bold coffee at home.</p>
+      <p><strong>Usage Tips:</strong> Best paired with dark roasts, use freshly ground beans for maximum flavor.</p>
+      <p class="price-tag">$349.00</p>
+      <button onclick="addToCart('Espresso Machine')">Add to Cart</button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product">
+      <a href="image/Espro-P3-French-Press_20250418-042646_full.jpeg" data-lightbox="equipment" data-title="French Press - Classic French press brewing for smooth, full-bodied coffee."><img src="image/Espro-P3-French-Press_20250418-042646_full.jpeg" alt="French Press"></a>
+      <h3>French Press</h3>
+      <p class="description">Classic French press brewing for smooth, full-bodied coffee.</p>
+      <p><strong>Usage Tips:</strong> Use coarse ground coffee and steep for 4 minutes for best results.</p>
+      <p class="price-tag">$49.99</p>
+      <button onclick="addToCart('French Press')">Add to Cart</button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product">
+      <a href="image/Kalita-Wave-185-Dripper_20250418-040846_full.jpeg" data-lightbox="equipment" data-title="Pour Over Kit - Achieve precision and clarity in every cup with this pour-over brewing set."><img src="image/Kalita-Wave-185-Dripper_20250418-040846_full.jpeg" alt="Pour Over Kit"></a>
+      <h3>Pour Over Kit</h3>
+      <p class="description">Achieve precision and clarity in every cup with this pour-over brewing set.</p>
+      <p><strong>Usage Tips:</strong> Use a gooseneck kettle for controlled pouring and better extraction.</p>
+      <p class="price-tag">$29.99</p>
+      <button onclick="addToCart('Pour Over Kit')">Add to Cart</button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product">
+      <a href="image/coffee_grinder33.jpg" data-lightbox="equipment" data-title="Coffee Grinder - Consistent grind sizes for better extraction and flavor.">
+        <img src="image/coffee_grinder33.jpg" alt="Coffee Grinder"></a>
+      <h3>Coffee Grinder</h3>
+      <p class="description">Burr grinder for consistent grind sizes—unlock balanced extraction across all brew methods.</p>
+      <p><strong>Usage Tips:</strong> Adjust grind size per brew: coarse for French press, medium for drip, fine for espresso. Clean burrs regularly.</p>
+      <p class="price-tag">$89.00</p>
+      <button onclick="addToCart('Coffee Grinder')">Add to Cart</button>
+    </div>
+    
+    <!-- Product 5 -->
+<div class="product">
+  <a href="image/aerapressss.jpg" data-lightbox="equipment" data-title="AeroPress - Compact and versatile brewer for clean, quick cups.">
+    <img src="image/aerapressss.jpg" alt="AeroPress">
+  </a>
+  <h3>AeroPress</h3>
+  <p class="description">Compact and versatile manual brewer known for clean, sweet cups in under 2 minutes.</p>
+  <p><strong>Usage Tips:</strong> Use 14–17g medium-fine grind, 80–85°C water; try the inverted method for richer body.</p>
+  <p class="price-tag">$39.99</p>
+  <button onclick="addToCart('AeroPress')">Add to Cart</button>
+</div>
+    <!-- Product 6 -->
+<div class="product">
+  <a href="image/chemex.jpg" data-lightbox="equipment" data-title="Chemex - Elegant pour-over with bright clarity and clean mouthfeel.">
+    <img src="image/chemex.jpg" alt="Chemex">
+  </a>
+  <h3>Chemex</h3>
+  <p class="description">Iconic glass pour-over brewer that highlights clarity and delicate flavors.</p>
+  <p><strong>Usage Tips:</strong> Use the thick Chemex filters, 1:15 ratio, medium-coarse grind, and pour in slow pulses to avoid stalling.</p>
+  <p class="price-tag">$49.00</p>
+  <button onclick="addToCart('Chemex')">Add to Cart</button>
+</div>
+    <!-- Product 7 -->
+<div class="product">
+  <a href="image/hariov60.jpg" data-lightbox="equipment" data-title="Hario V60 - Precision pour-over for nuanced, vibrant brews">
+    <img src="image/hariov60.jpg" alt="Hario V60">
+  </a>
+  <h3>Hario V60</h3>
+  <p class="description">Cone-shaped pour-over dripper with spiral ribs for expressive, bright cups.</p>
+  <p><strong>Usage Tips:</strong> Medium-fine grind, 1:15–1:16 ratio, maintain steady spiral pours; total brew time ~2:30–3:00.</p>
+  <p class="price-tag">$24.99</p>
+  <button onclick="addToCart('Hario V60')">Add to Cart</button>
+</div>
+<!-- Product 8 -->
+<div class="product">
+  <a href="image/pot.jpg" data-lightbox="equipment" data-title="Moka Pot - Stovetop classic for rich, espresso-like coffee.">
+    <img src="image/pot.jpg" alt="Moka Pot">
+  </a>
+  <h3>Moka Pot</h3>
+  <p class="description">Stovetop brewer producing bold, concentrated coffee with classic Italian character.</p>
+  <p><strong>Usage Tips:</strong> Use medium-fine grind, pre-heat water, and remove from heat as soon as it starts to sputter to avoid bitterness.</p>
+  <p class="price-tag">$29.50</p>
+  <button onclick="addToCart('Moka Pot')">Add to Cart</button>
+</div>
+    
+
+  </section>
+
+  <!-- ===== Login Modal ===== -->
+  <div class="auth-modal" id="loginModal">
+    <div class="auth-modal-content">
+      <button class="auth-close-btn" onclick="closeAuthModal('loginModal')">✖</button>
+      <h2>Welcome Back!</h2>
+      <form class="auth-form" onsubmit="handleLogin(event)">
+        <label for="loginEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="loginEmail" placeholder="Email Address" required>
+        <label for="loginPassword" class="visually-hidden">Password</label>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <label class="robot-check"><input type="checkbox" id="loginRobot"> I'm not a robot</label>
+        <button type="submit">Login</button>
+      </form>
+      <div class="social-auth">
+        <div class="or">or</div>
+        <button class="social-btn google-btn" onclick="socialLogin('google')">Continue with Google</button>
+        <button class="social-btn facebook-btn" onclick="socialLogin('facebook')">Continue with Facebook</button>
+      </div>
+      <div class="auth-switch">
+        Don't have an account? <a href="#" onclick="switchToSignup()">Sign up here</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Signup Modal ===== -->
+  <div class="auth-modal" id="signupModal">
+    <div class="auth-modal-content">
+      <button class="auth-close-btn" onclick="closeAuthModal('signupModal')">✖</button>
+      <h2>Join Bean Boutique!</h2>
+      <form class="auth-form" onsubmit="handleSignup(event)">
+        <label for="signupName" class="visually-hidden">Full name</label>
+        <input type="text" id="signupName" placeholder="Full Name" required>
+        <label for="signupEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="signupEmail" placeholder="Email Address" required>
+        <label for="signupPassword" class="visually-hidden">Password</label>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <label for="signupConfirmPassword" class="visually-hidden">Confirm password</label>
+        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+        <label class="robot-check"><input type="checkbox" id="signupRobot"> I'm not a robot</label>
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="social-auth">
+        <div class="or">or</div>
+        <button class="social-btn google-btn" onclick="socialSignup('google')">Sign up with Google</button>
+        <button class="social-btn facebook-btn" onclick="socialSignup('facebook')">Sign up with Facebook</button>
+      </div>
+      <div class="auth-switch">
+        Already have an account? <a href="#" onclick="switchToLogin()">Login here</a>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- JavaScript -->
+  <script>
+    // Check authentication status on page load
+    window.onload = function() {
+      checkAuthStatus();
+    };
+
+    // Authentication Functions
+    function checkAuthStatus() {
+      const currentUser = localStorage.getItem('currentUser');
+      const authButtons = document.getElementById('authButtons');
+      const userInfo = document.getElementById('userInfo');
+      const welcomeMessage = document.getElementById('welcomeMessage');
+
+      if (currentUser) {
+        const userData = JSON.parse(currentUser);
+        authButtons.classList.add('hidden');
+        userInfo.classList.remove('hidden');
+        welcomeMessage.textContent = `Welcome, ${userData.name}!`;
+      } else {
+        authButtons.classList.remove('hidden');
+        userInfo.classList.add('hidden');
+      }
+      // Reveal auth UI after state is applied (prevents flicker)
+      document.body.classList.add('auth-state-applied');
+
+    // Simulated social auth 
+    function socialUserFromProvider(provider){
+      const name = provider === 'google' ? 'Google User' : 'Facebook User';
+      const email = (provider + '_user@example.com');
+      return { name, email, password: provider + '_oauth' };
+    }
+    function ensureRegistered(user){
+      const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (!users.find(u => (u.email||'').toLowerCase() === user.email.toLowerCase())){
+        users.push(user);
+        localStorage.setItem('registeredUsers', JSON.stringify(users));
+      }
+    }
+    function finishLogin(user){
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      closeAuthModal('loginModal');
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      showAddToast('Welcome, ' + user.name + '!');
+    }
+    function socialLogin(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    function socialSignup(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    // Expose to global for inline onclick handlers
+    window.socialLogin = socialLogin;
+    window.socialSignup = socialSignup;
+    }
+
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.add('active');
+    }
+
+    function openSignupModal() {
+      document.getElementById('signupModal').classList.add('active');
+    }
+
+    function closeAuthModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    function switchToSignup() {
+      closeAuthModal('loginModal');
+      openSignupModal();
+    }
+
+    function switchToLogin() {
+      closeAuthModal('signupModal');
+      openLoginModal();
+    }
+
+    // === Social auth (simulated) — global ===
+    function socialUserFromProvider(provider){
+      const name = provider === 'google' ? 'Google User' : 'Facebook User';
+      const email = (provider + '_user@example.com');
+      return { name, email, password: provider + '_oauth' };
+    }
+    function ensureRegistered(user){
+      const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (!users.find(u => (u.email||'').toLowerCase() === user.email.toLowerCase())){
+        users.push(user);
+        localStorage.setItem('registeredUsers', JSON.stringify(users));
+      }
+    }
+    function finishLogin(user){
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      closeAuthModal('loginModal');
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      alert('Welcome, ' + user.name + '!');
+    }
+    function socialLogin(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    function socialSignup(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    // Rebind to global versions for inline onclick handlers
+    window.socialLogin = socialLogin;
+    window.socialSignup = socialSignup;
+
+    function handleLogin(event) {
+      event.preventDefault();
+      if (!document.getElementById('loginRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+      
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      const user = registeredUsers.find(u => (u.email || '').toLowerCase() === email && u.password === password);
+      
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        closeAuthModal('loginModal');
+        checkAuthStatus();
+        // If there is a pending item to add, add it now before redirect
+        const pendingItem = sessionStorage.getItem('pendingAddItem');
+        if (pendingItem) {
+          try {
+            const pending = JSON.parse(pendingItem);
+            addItemToCart(pending.name, pending.image || null, (typeof pending.price === 'number' ? pending.price : null));
+            showAddToast(pending.name + ' added to cart');
+          } catch {
+            addItemToCart(pendingItem, null, null);
+            showAddToast(pendingItem + ' added to cart');
+          }
+          sessionStorage.removeItem('pendingAddItem');
+        }
+        alert('Login successful! Welcome back, ' + user.name + '!');
+      } else {
+        alert('Invalid email or password. Please try again.');
+      }
+    }
+
+    function handleSignup(event) {
+      event.preventDefault();
+      if (!document.getElementById('signupRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+      
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+      
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long!');
+        return;
+      }
+      
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      
+      if (registeredUsers.find(u => (u.email || '').toLowerCase() === email)) {
+        alert('An account with this email already exists!');
+        return;
+      }
+      
+      const newUser = { name, email, password };
+      registeredUsers.push(newUser);
+      
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      // If there is a pending item to add, add it now and show toast (stay on page)
+      const pendingItem = sessionStorage.getItem('pendingAddItem');
+      if (pendingItem) {
+        try {
+          const pending = JSON.parse(pendingItem);
+          addItemToCart(pending.name, pending.image || null, (typeof pending.price === 'number' ? pending.price : null));
+          showAddToast(pending.name + ' added to cart');
+        } catch {
+          addItemToCart(pendingItem, null, null);
+          showAddToast(pendingItem + ' added to cart');
+        }
+        sessionStorage.removeItem('pendingAddItem');
+      }
+      alert('Account created successfully! Welcome to Bean Boutique, ' + name + '!');
+    }
+
+    function logout() {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('cart');
+      checkAuthStatus();
+      alert('You have been logged out successfully!');
+    }
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+      
+      if (event.target === loginModal) {
+        closeAuthModal('loginModal');
+      }
+      if (event.target === signupModal) {
+        closeAuthModal('signupModal');
+      }
+    }
+
+    // Close modals on Escape key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        if (loginModal && loginModal.classList.contains('active')) {
+          closeAuthModal('loginModal');
+        }
+        if (signupModal && signupModal.classList.contains('active')) {
+          closeAuthModal('signupModal');
+        }
+      }
+    });
+
+    // Cart helpers
+    function getCart() {
+      try { return JSON.parse(localStorage.getItem('cart') || '[]'); } catch { return []; }
+    }
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    // Find image src for a product by matching its title in the DOM
+    function getImageForProduct(name) {
+      const products = document.querySelectorAll('.product');
+      for (const p of products) {
+        const titleEl = p.querySelector('h3');
+        const imgEl = p.querySelector('img');
+        if (titleEl && imgEl && titleEl.textContent.trim() === name) {
+          return imgEl.getAttribute('src');
+        }
+      }
+      return null;
+    }
+    // Find price text for a product by matching its title in the DOM
+    function getPriceForProduct(name) {
+      const products = document.querySelectorAll('.product');
+      for (const p of products) {
+        const titleEl = p.querySelector('h3');
+        const priceEl = p.querySelector('.price-tag');
+        if (titleEl && priceEl && titleEl.textContent.trim() === name) {
+          const txt = priceEl.textContent.trim();
+          const num = parseFloat(txt.replace(/[^0-9.]/g, ''));
+          return isNaN(num) ? null : num;
+        }
+      }
+      return null;
+    }
+
+    function addItemToCart(productName, imageSrc, price) {
+      const cart = getCart();
+      const existing = cart.find(i => i.name === productName);
+      if (existing) {
+        existing.quantity += 1;
+        if (!existing.image && imageSrc) existing.image = imageSrc;
+        if ((existing.price === undefined || existing.price === null) && (typeof price === 'number')) existing.price = price;
+      } else {
+        cart.push({ name: productName, image: imageSrc || null, price: (typeof price === 'number') ? price : null, quantity: 1 });
+      }
+      saveCart(cart);
+    }
+
+    // Add to Cart with login requirement (stay on page)
+    function addToCart(productName) {
+      const currentUser = localStorage.getItem('currentUser');
+      const imageSrc = getImageForProduct(productName);
+      const priceVal = getPriceForProduct(productName);
+      if (!currentUser) {
+        const pending = { name: productName, image: imageSrc, price: priceVal };
+        sessionStorage.setItem('pendingAddItem', JSON.stringify(pending));
+        openLoginModal();
+        return;
+      }
+      addItemToCart(productName, imageSrc, priceVal);
+      showAddToast(productName + " added to cart");
+    }
+
+    function showAddToast(message) {
+      let toast = document.getElementById('cartToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'cartToast';
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = '🛒 ' + message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    // Lightbox Options
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    });
+  </script>
+  <!-- ===== Ultra-Modern Footer ===== -->
+  <footer class="modern-footer">
+    <div class="footer-container">
+     
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>📍 Bean Boutique, Yangon, Myanmar</p>
+        <p>📞 +95 123 456 789</p>
+        <p>📧 hello@beanboutique.com</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <!-- Interactive Map -->
+      <div class="footer-section">
+        <h3>Find Us</h3>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.062!2d96.1951!3d16.8661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c193f4e6e4e6b3%3A0x4d9b7a8b5c6d9e0f!2sYangon%2C%20Myanmar!5e0!3m2!1sen!2smm!4v1691234567890!5m2!1sen!2smm"
+            height="200"
+            style="border:0; border-radius: 10px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Newsletter Signup -->
+      <div class="footer-section">
+        <h3>Stay Updated</h3>
+        <p>Join our newsletter for fresh brews and exclusive deals!</p>
+        <form class="newsletter-form">
+          <label for="newsletterEmailBrewing" class="visually-hidden">Email address</label>
+          <input type="email" id="newsletterEmailBrewing" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bean Boutique. All rights reserved. Made with ❤️ for coffee lovers.</p>
+    </div>
+  </footer>
+
+  <!-- ===== JS Popup & Authentication ===== -->
+  <script>
+    // Check authentication status on page load
+    window.onload = function() {
+      checkAuthStatus();
+    };
+
+    // Authentication Functions
+    function checkAuthStatus() {
+      const currentUser = localStorage.getItem('currentUser');
+      const authButtons = document.getElementById('authButtons');
+      const userInfo = document.getElementById('userInfo');
+      const welcomeMessage = document.getElementById('welcomeMessage');
+
+      if (currentUser) {
+        const userData = JSON.parse(currentUser);
+        authButtons.classList.add('hidden');
+        userInfo.classList.remove('hidden');
+        welcomeMessage.textContent = `Welcome, ${userData.name}!`;
+      } else {
+        authButtons.classList.remove('hidden');
+        userInfo.classList.add('hidden');
+      }
+    }
+
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.add('active');
+    }
+
+    function openSignupModal() {
+      document.getElementById('signupModal').classList.add('active');
+    }
+
+    function closeAuthModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    function switchToSignup() {
+      closeAuthModal('loginModal');
+      openSignupModal();
+    }
+
+    function switchToLogin() {
+      closeAuthModal('signupModal');
+      openLoginModal();
+    }
+
+    function handleLogin(event) {
+      event.preventDefault();
+      if (!document.getElementById('loginRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      const user = registeredUsers.find(u => (u.email || '').toLowerCase() === email && u.password === password);
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        closeAuthModal('loginModal');
+        checkAuthStatus();
+        alert('Login successful! Welcome back, ' + user.name + '!');
+      } else {
+        alert('Invalid email or password. Please try again.');
+      }
+    }
+
+    function handleSignup(event) {
+      event.preventDefault();
+      if (!document.getElementById('signupRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+      if (password !== confirmPassword) { alert('Passwords do not match!'); return; }
+      if (password.length < 6) { alert('Password must be at least 6 characters long!'); return; }
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (registeredUsers.find(u => (u.email || '').toLowerCase() === email)) { alert('An account with this email already exists!'); return; }
+      const newUser = { name, email, password };
+      registeredUsers.push(newUser);
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      alert('Account created successfully! Welcome to Bean Boutique, ' + name + '!');
+    }
+
+    function logout() {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('cart');
+      checkAuthStatus();
+      alert('You have been logged out successfully!');
+    }
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+      if (event.target === loginModal) closeAuthModal('loginModal');
+      if (event.target === signupModal) closeAuthModal('signupModal');
+    }
+
+    // Search Filter (deduplicated variable name)
+    const searchBox2 = document.getElementById("searchBox");
+    searchBox2.addEventListener("keyup", function() {
+      const filter = searchBox2.value.toLowerCase();
+      const products = document.querySelectorAll(".product");
+
+      products.forEach(product => {
+        const text = product.innerText.toLowerCase();
+        product.style.display = text.includes(filter) ? "block" : "none";
+      });
+    });
+
+    // (Removed duplicate basic cart functions here to preserve image/price-aware versions defined above)
+
+    function showAddToast(message) {
+      let toast = document.getElementById('cartToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'cartToast';
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = '🛒 ' + message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    // Lightbox Options
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    });
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+<!-- Unified Auth UI Sync -->
+<script>
+  (function(){
+    function bbSyncAuthUI(){
+      const current = localStorage.getItem('currentUser');
+      const authButtons = document.getElementById('authButtons');
+      const userInfo = document.getElementById('userInfo');
+      const welcomeMessage = document.getElementById('welcomeMessage');
+      let userData = null;
+      if (current) { try { userData = JSON.parse(current); } catch(e){} }
+      if (userData) {
+        if (authButtons) authButtons.classList.add('hidden');
+        if (userInfo) userInfo.classList.remove('hidden');
+        if (welcomeMessage && userData.name) welcomeMessage.textContent = `Welcome, ${userData.name}!`;
+      } else {
+        if (authButtons) authButtons.classList.remove('hidden');
+        if (userInfo) userInfo.classList.add('hidden');
+      }
+      document.body.classList.add('auth-state-applied');
+    }
+    window.bbSyncAuthUI = bbSyncAuthUI;
+    window.checkAuthStatus = bbSyncAuthUI; // normalize across pages
+    document.addEventListener('DOMContentLoaded', bbSyncAuthUI);
+    window.addEventListener('load', bbSyncAuthUI);
+    window.addEventListener('storage', function(e){
+      if (e.key === 'currentUser') bbSyncAuthUI();
+    });
+  })();
+</script>
+
+</body>
+</html>

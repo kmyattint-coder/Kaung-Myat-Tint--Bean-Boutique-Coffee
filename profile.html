@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Your Profile - Bean Boutique</title>
+  <link rel="stylesheet" href="style.css" >
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <script>document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('auth-ready');});</script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="image/logo8.png" alt="Bean Boutique Logo">
+      <span>Bean Boutique</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="coffee.html">Coffee Selection</a></li>
+        <li><a href="brewing.html">Brewing Equipment</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="event.html">Events & Workshops</a></li>
+        <li><a href="offers.html">Special Offers</a></li>
+        <li><a href="profile.html" class="active">Profile</a></li>
+      </ul>
+    </nav>
+    <!-- Authentication Buttons -->
+    <div class="auth-buttons" id="authButtons">
+      <button class="auth-btn login-btn" onclick="openLoginModal()">Login</button>
+      <button class="auth-btn signup-btn" onclick="openSignupModal()">Sign Up</button>
+    </div>
+    <!-- User Info -->
+    <div class="user-info hidden" id="userInfo">
+      <span id="welcomeMessage">Welcome, User!</span>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+    <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Site Announcements Ticker -->
+  <div class="site-ticker" role="region" aria-label="Site announcements">
+    <div class="ticker-inner">
+      <div class="ticker-content">
+        <span class="ticker-seq">Manage your account, event registrations, and subscriptions here. | Update details anytime. | Questions? Contact Bean Boutique.</span>
+        <span class="ticker-seq">Manage your account, event registrations, and subscriptions here. | Update details anytime. | Questions? Contact Bean Boutique.</span>
+      </div>
+    </div>
+  </div>
+  <section class="profile-hero">
+    <div class="profile-hero__inner">
+      <h1>Your Profile</h1>
+      <p>Manage your event registrations and subscriptions in one place.</p>
+    </div>
+  </section>
+
+  <main class="profile-wrap">
+    <!-- User Details -->
+    <section class="profile-header">
+      <h1>Your Details</h1>
+      <p id="detailsSub">Basic info from your account.</p>
+    </section>
+    <section id="detailsSection">
+      <div class="reg-card">
+        <h3>Account</h3>
+        <div class="meta"><strong>Name:</strong> <span id="userNameDisplay">—</span></div>
+        <div class="meta"><strong>Email:</strong> <span id="userEmailDisplay">—</span></div>
+      </div>
+    </section>
+
+    <!-- Registrations -->
+    <section class="profile-header">
+      <h1>Your Event Registrations</h1>
+      <p id="profileSub">Registrations linked to your account.</p>
+    </section>
+
+    <div id="regList" class="reg-list"></div>
+    <div class="empty-state hidden" id="emptyState">No registrations found yet.</div>
+    <div class="actions">
+      <a href="event.html" class="btn">Browse Events</a>
+      <button id="clearMine" class="btn btn-danger ml-2">Clear My Registrations</button>
+    </div>
+
+    <section class="profile-header mt-5">
+      <h1>Your Subscriptions</h1>
+      <p id="subsSub">Active subscriptions linked to your account.</p>
+    </section>
+    <div id="subsList" class="reg-list"></div>
+    <div class="empty-state hidden" id="subsEmpty">No subscriptions yet. Explore plans on Special Offers.</div>
+    <div class="actions">
+      <a href="offers.html" class="btn">Browse Plans</a>
+      <button id="clearSubs" class="btn btn-danger ml-2">Clear My Subscriptions</button>
+    </div>
+  </main>
+
+  <!-- ===== Ultra-Modern Footer ===== -->
+  <footer class="modern-footer">
+    <div class="footer-container">
+
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>📍 Bean Boutique, Yangon, Myanmar</p>
+        <p>📞 +95 123 456 789</p>
+        <p>📧 hello@beanboutique.com</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <!-- Interactive Map -->
+      <div class="footer-section">
+        <h3>Find Us</h3>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.062!2d96.1951!3d16.8661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c193f4e6e4e6b3%3A0x4d9b7a8b5c6d9e0f!2sYangon%2C%20Myanmar!5e0!3m2!1sen!2smm!4v1691234567890!5m2!1sen!2smm"
+            height="200"
+            style="border:0; border-radius: 10px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Newsletter Signup -->
+      <div class="footer-section">
+        <h3>Stay Updated</h3>
+        <p>Join our newsletter for fresh brews and exclusive deals!</p>
+        <form class="newsletter-form">
+          <label for="newsletterEmailProfile" class="visually-hidden">Email address</label>
+          <input type="email" id="newsletterEmailProfile" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bean Boutique. All rights reserved. Made with ❤️ for coffee lovers.</p>
+    </div>
+  </footer>
+
+  <!-- ===== Login Modal ===== -->
+  <div class="auth-modal" id="loginModal">
+    <div class="auth-modal-content">
+      <button class="auth-close-btn" onclick="closeAuthModal('loginModal')">✖</button>
+      <h2>Welcome Back!</h2>
+      <form class="auth-form" onsubmit="handleLogin(event)">
+        <label for="loginEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="loginEmail" placeholder="Email Address" required>
+        <label for="loginPassword" class="visually-hidden">Password</label>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <label class="robot-check"><input type="checkbox" id="loginRobot"> I'm not a robot</label>
+        <button type="submit">Login</button>
+      </form>
+      <div class="social-auth">
+        <div class="or">or</div>
+        <button class="social-btn google-btn" onclick="socialLogin('google')">Continue with Google</button>
+        <button class="social-btn facebook-btn" onclick="socialLogin('facebook')">Continue with Facebook</button>
+      </div>
+      <div class="auth-switch">
+        Don't have an account? <a href="#" onclick="switchToSignup()">Sign up here</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Signup Modal ===== -->
+  <div class="auth-modal" id="signupModal">
+    <div class="auth-modal-content">
+      <button class="auth-close-btn" onclick="closeAuthModal('signupModal')">✖</button>
+      <h2>Join Bean Boutique!</h2>
+      <form class="auth-form" onsubmit="handleSignup(event)">
+        <label for="signupName" class="visually-hidden">Full name</label>
+        <input type="text" id="signupName" placeholder="Full Name" required>
+        <label for="signupEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="signupEmail" placeholder="Email Address" required>
+        <label for="signupPassword" class="visually-hidden">Password</label>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <label for="signupConfirmPassword" class="visually-hidden">Confirm password</label>
+        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+        <label class="robot-check"><input type="checkbox" id="signupRobot"> I'm not a robot</label>
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="social-auth">
+        <div class="or">or</div>
+        <button class="social-btn google-btn" onclick="socialSignup('google')">Sign up with Google</button>
+        <button class="social-btn facebook-btn" onclick="socialSignup('facebook')">Sign up with Facebook</button>
+      </div>
+      <div class="auth-switch">
+        Already have an account? <a href="#" onclick="switchToLogin()">Login here</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Auth visibility on load
+    document.addEventListener('DOMContentLoaded', checkAuthStatus);
+    window.addEventListener('load', checkAuthStatus);
+
+    function checkAuthStatus() {
+      const currentUser = localStorage.getItem('currentUser');
+      const authButtons = document.getElementById('authButtons');
+      const userInfo = document.getElementById('userInfo');
+      const welcomeMessage = document.getElementById('welcomeMessage');
+      if (currentUser) {
+        try {
+          const userData = JSON.parse(currentUser);
+          authButtons.classList.add('hidden');
+          userInfo.classList.remove('hidden');
+          welcomeMessage.textContent = `Welcome, ${userData.name}!`;
+        } catch {
+          authButtons.classList.remove('hidden');
+          userInfo.classList.add('hidden');
+        }
+      } else {
+        authButtons.classList.remove('hidden');
+        userInfo.classList.add('hidden');
+      }
+    
+    // Reveal auth UI after state is applied (prevents flicker)
+    document.body.classList.add('auth-state-applied');
+    }
+    function openLoginModal() { document.getElementById('loginModal').classList.add('active'); }
+    function openSignupModal() { document.getElementById('signupModal').classList.add('active'); }
+    function closeAuthModal(id) { document.getElementById(id).classList.remove('active'); }
+    function switchToSignup() { closeAuthModal('loginModal'); openSignupModal(); }
+    function switchToLogin() { closeAuthModal('signupModal'); openLoginModal(); }
+
+    // === Social auth (simulated) — global ===
+    function socialUserFromProvider(provider){
+      const name = provider === 'google' ? 'Google User' : 'Facebook User';
+      const email = (provider + '_user@example.com');
+      return { name, email, password: provider + '_oauth' };
+    }
+    function ensureRegistered(user){
+      const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (!users.find(u => (u.email||'').toLowerCase() === user.email.toLowerCase())){
+        users.push(user);
+        localStorage.setItem('registeredUsers', JSON.stringify(users));
+      }
+    }
+    function finishLogin(user){
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      closeAuthModal('loginModal');
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      render();
+      alert('Welcome, ' + user.name + '!');
+    }
+    function socialLogin(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    function socialSignup(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    // Expose for inline onclick handlers
+    window.socialLogin = socialLogin;
+    window.socialSignup = socialSignup;
+
+    function handleLogin(event) {
+      event.preventDefault();
+      if (!document.getElementById('loginRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      const user = registeredUsers.find(u => (u.email || '').toLowerCase() === email && u.password === password);
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        closeAuthModal('loginModal');
+        checkAuthStatus();
+        alert('Login successful! Welcome back, ' + user.name + '!');
+        // Re-render profile content to reflect user context
+        render();
+      } else {
+        alert('Invalid email or password. Please try again.');
+      }
+    }
+
+    function handleSignup(event) {
+      event.preventDefault();
+      if (!document.getElementById('signupRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+      if (password !== confirmPassword) { alert('Passwords do not match!'); return; }
+      if (password.length < 6) { alert('Password must be at least 6 characters long!'); return; }
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (registeredUsers.find(u => (u.email || '').toLowerCase() === email)) { alert('An account with this email already exists!'); return; }
+      const newUser = { name, email, password };
+      registeredUsers.push(newUser);
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      alert('Account created successfully! Welcome to Bean Boutique, ' + name + '!');
+      // Re-render profile content to reflect user context
+      render();
+    }
+
+    function logout() {
+      localStorage.removeItem('currentUser');
+      checkAuthStatus();
+      // Re-render profile content after logout to hide registrations
+      render();
+      alert('You have been logged out successfully!');
+    }
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+      if (event.target === loginModal) closeAuthModal('loginModal');
+      if (event.target === signupModal) closeAuthModal('signupModal');
+    }
+
+    // Close auth modals on Escape key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        if (loginModal && loginModal.classList.contains('active')) closeAuthModal('loginModal');
+        if (signupModal && signupModal.classList.contains('active')) closeAuthModal('signupModal');
+      }
+    });
+    function getRegistrations() {
+      try { return JSON.parse(localStorage.getItem('eventRegistrations') || '[]'); } catch { return []; }
+    }
+    function saveRegistrations(list){ localStorage.setItem('eventRegistrations', JSON.stringify(list)); }
+    function getSubscriptions(){ try { return JSON.parse(localStorage.getItem('subscriptions') || '[]'); } catch { return []; } }
+
+    function render() {
+      const listEl = document.getElementById('regList');
+      const emptyEl = document.getElementById('emptyState');
+      const subEl = document.getElementById('profileSub');
+      const detailsSection = document.getElementById('detailsSection');
+      const detailsSub = document.getElementById('detailsSub');
+      const nameEl = document.getElementById('userNameDisplay');
+      const emailEl = document.getElementById('userEmailDisplay');
+      const subsListEl = document.getElementById('subsList');
+      const subsEmptyEl = document.getElementById('subsEmpty');
+      const subsSubEl = document.getElementById('subsSub');
+      const regs = getRegistrations();
+      const subs = getSubscriptions();
+
+      let userEmail = null;
+      let userName = null;
+      try {
+        const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+        if (user && user.email) {
+          userEmail = (user.email || '').toLowerCase();
+          userName = user.name || null;
+        }
+      } catch {}
+
+      // Details section
+      if (userEmail) {
+        detailsSection.classList.remove('hidden');
+        detailsSub.textContent = 'Basic info from your account.';
+        nameEl.textContent = userName || '—';
+        emailEl.textContent = userEmail || '—';
+      } else {
+        detailsSection.classList.add('hidden');
+        detailsSub.textContent = 'Log in to view your details.';
+      }
+
+      // If not logged in, show empty guidance instead of all device registrations
+      const filtered = userEmail ? regs.filter(r => (r.userEmail || r.email || '').toLowerCase() === userEmail) : [];
+      subEl.textContent = userEmail ? 'Registrations linked to your account.' : 'Log in to view your registrations.';
+
+      listEl.innerHTML = '';
+      if (!filtered.length) {
+        emptyEl.style.display = 'block';
+      } else {
+        emptyEl.style.display = 'none';
+
+        filtered
+          .sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .forEach(r => {
+            const card = document.createElement('div');
+            card.className = 'reg-card';
+            card.innerHTML = `
+              <h3>${r.eventTitle || 'Event'}</h3>
+              <div class="meta">Registered by: ${[r.first, r.last].filter(Boolean).join(' ') || (r.userName || 'Guest')}</div>
+              <div class="meta">Email: ${(r.userEmail || r.email || '')}</div>
+              <div class="meta">On: ${new Date(r.createdAt).toLocaleString()}</div>
+            `;
+            listEl.appendChild(card);
+          });
+
+      }
+
+      // Subscriptions render
+      subsListEl.innerHTML = '';
+      const subsFiltered = userEmail ? subs.filter(s => (s.email || '').toLowerCase() === userEmail) : [];
+      subsSubEl.textContent = userEmail ? 'Active subscriptions linked to your account.' : 'Log in to view your subscriptions.';
+      if (!subsFiltered.length) {
+        subsEmptyEl.classList.remove('hidden');
+      } else {
+        subsEmptyEl.classList.add('hidden');
+        subsFiltered
+          .sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .forEach(s => {
+            const card = document.createElement('div');
+            card.className = 'reg-card';
+            card.innerHTML = `
+              <h3>${s.plan || 'Subscription'}</h3>
+              <div class="meta">Subscriber: ${s.name || '—'}</div>
+              <div class="meta">Email: ${s.email || ''}</div>
+              <div class="meta">Started: ${new Date(s.createdAt).toLocaleString()}</div>
+            `;
+            subsListEl.appendChild(card);
+          });
+      }
+    }
+
+    // Clear current user's registrations
+    document.getElementById('clearMine').addEventListener('click', function(){
+      let userEmail = null;
+      try { const user = JSON.parse(localStorage.getItem('currentUser')||'null'); if (user && user.email) userEmail = (user.email||'').toLowerCase(); } catch {}
+      if (!userEmail) { alert('Please log in to clear your registrations.'); return; }
+      const regs = getRegistrations();
+      const remaining = regs.filter(r => (r.userEmail || r.email || '').toLowerCase() !== userEmail);
+      saveRegistrations(remaining);
+      render();
+    });
+
+    // Clear current user's subscriptions (bind once)
+    document.getElementById('clearSubs').addEventListener('click', function(){
+      let userEmail = null;
+      try { const user = JSON.parse(localStorage.getItem('currentUser')||'null'); if (user && user.email) userEmail = (user.email||'').toLowerCase(); } catch {}
+      if (!userEmail) { alert('Please log in to clear your subscriptions.'); return; }
+      const subs = getSubscriptions();
+      const remaining = subs.filter(s => (s.email||'').toLowerCase() !== userEmail);
+      localStorage.setItem('subscriptions', JSON.stringify(remaining));
+      render();
+    });
+
+    // Re-render on storage changes or after logout in another tab
+    window.addEventListener('storage', function(e){ if (e.key === 'eventRegistrations' || e.key === 'currentUser' || e.key === 'subscriptions') render(); });
+
+    render();
+  </script>
+</body>
+</html>

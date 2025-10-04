@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Bean Boutique - Home</title>
+  <link rel="stylesheet" href="style.css" >
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <script>document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('auth-ready');});</script>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+<header>
+  <!-- Logo -->
+  <div class="logo">
+    <img src="image/logo8.png" alt="Bean Boutique Logo">
+    <span>Bean Boutique</span>
+  </div>
+
+  <!-- Navigation -->
+ <nav>
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="coffee.html">Coffee Selection</a></li>
+    <li><a href="brewing.html">Brewing Equipment</a></li>
+    <li><a href="cart.html">Cart</a></li>
+    <li><a href="event.html">Events & Workshops</a></li>
+    <li><a href="offers.html">Special Offers</a></li>
+    <li><a href="profile.html">Profile</a></li>
+  </ul>
+</nav>
+
+
+  <!-- Hamburger Menu (Mobile) -->
+  <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Authentication Buttons -->
+  <div class="auth-buttons" id="authButtons">
+    <button class="auth-btn login-btn" onclick="openLoginModal()">Login</button>
+    <button class="auth-btn signup-btn" onclick="openSignupModal()">Sign Up</button>
+  </div>
+
+  <!-- User Info (hidden by default) -->
+  <div class="user-info hidden" id="userInfo">
+    <span id="welcomeMessage">Welcome, User!</span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+ </header>
+
+  <!-- Site Announcements Ticker -->
+  <div class="site-ticker" role="region" aria-label="Site announcements">
+    <div class="ticker-inner">
+      <div class="ticker-content">
+        <span class="ticker-seq">☕️ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day! |  | 🎉 Join our Events & Workshops to explore coffee culture.</span>
+        <span class="ticker-seq">☕️ Welcome to Bean Boutique – Freshly Roasted Coffee Every Day! |  | 🎉 Join our Events & Workshops to explore coffee culture.</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== Hero ===== -->
+  <section class="hero fade-in delay-2">
+    <div class="hero-text">
+      <h1>Welcome to Bean Boutique</h1>
+      <p>Experience the finest blends and the art of brewing.</p>
+      <a href="coffee.html" class="btn">Explore Our Coffee</a>
+    </div>
+  </section>
+  
+  
+  <!-- ===== Features ===== -->
+  <section class="features fade-in delay-3">
+    <a href="brewing.html" class="feature fade-in delay-4">
+      <img src="image/blend.webp" alt="Equipment">
+      <h3>Brewing Equipment</h3>
+      <p>Find hand-picked tools to perfect your brew.</p>
+    </a>
+
+    <a href="coffee.html" class="feature fade-in delay-5">
+      <img src="image/cofeeeeeee.webp" alt="Coffee">
+      <h3>Coffee Selection</h3>
+      <p>Discover single-origin and house blends from around the world.</p>
+    </a>
+
+    <a href="event.html" class="feature fade-in delay-6">
+      <img src="image/group.webp" alt="Events">
+      <h3>Workshops & Events</h3>
+      <p>Join barista training or coffee tasting events.</p>
+    </a>
+  </section>
+
+  <!-- ===== Special Offer Section ===== -->
+  <section class="special-offer">
+    <div class="offer-content">
+      <div class="offer-image">
+        
+      </div>
+      <div class="offer-text">
+        <h2>Exclusive Offers Just for You</h2>
+        <p>Don't miss out on our limited-time deals! Get the best prices on your favorite coffee blends and brewing equipment.</p>
+        <a href="offers.html" class="btn">View Offers</a>
+      </div>
+    </div>
+  </section>
+  <!-- Slideshow (below Features) -->
+  <div class="home-slider">
+    <div class="slider-inner">
+      <div class="slide active">
+        <img src="image/slide.jpg" alt="Signature House Blend">
+        <div class="slide-caption">
+          </div>
+      </div>
+      <div class="slide">
+        <img src="image/slide2.jpg" alt="">
+        <div class="slide-caption">
+          </div>
+      </div>
+      <div class="slide">
+        <img src="image/slide33.jpg" alt="Espresso Roast">
+        <div class="slide-caption">
+        
+        </div>
+      </div>
+      <div class="slide">
+        <img src="image/slide4444.jpg" alt="Brew Moments">
+        <div class="slide-caption">
+          </div>
+      </div>
+
+      <button class="slider-nav prev" aria-label="Previous">‹</button>
+      <button class="slider-nav next" aria-label="Next">›</button>
+
+      <div class="slider-dots" role="tablist" aria-label="Slideshow Pagination">
+        <button class="dot active" aria-label="Slide 1"></button>
+        <button class="dot" aria-label="Slide 2"></button>
+        <button class="dot" aria-label="Slide 3"></button>
+        <button class="dot" aria-label="Slide 4"></button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ===== Popup ===== -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup">
+      <button class="close-btn" onclick="closePopup()">✖</button>
+      <h2>Get 10% Off!</h2>
+      <p>Sign up now to receive a discount on your first order.</p>
+      <button type="button" onclick="startDiscountFlow()">Sign Up</button>
+    </div>
+  </div>
+
+  <!-- ===== Login Modal ===== -->
+  <div class="auth-modal" id="loginModal">
+    <div class="auth-modal-content">
+      <button class="auth-close-btn" onclick="closeAuthModal('loginModal')">✖</button>
+      <h2>Welcome Back!</h2>
+      <form class="auth-form" onsubmit="handleLogin(event)">
+        <label for="loginEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="loginEmail" placeholder="Email Address" required>
+        <label for="loginPassword" class="visually-hidden">Password</label>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <label class="robot-check"><input type="checkbox" id="loginRobot"> I'm not a robot</label>
+        <button type="submit">Login</button>
+      </form>
+      <div class="social-auth">
+        <div class="or">or</div>
+        <button class="social-btn google-btn" onclick="socialLogin('google')">Continue with Google</button>
+        <button class="social-btn facebook-btn" onclick="socialLogin('facebook')">Continue with Facebook</button>
+      </div>
+      <div class="auth-switch">
+        Don't have an account? <a href="#" onclick="switchToSignup()">Sign up here</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Signup Modal ===== -->
+  <div class="auth-modal" id="signupModal">
+    <div class="auth-modal-content">
+      <button class="auth-close-btn" onclick="closeAuthModal('signupModal')">✖</button>
+      <h2>Join Bean Boutique!</h2>
+      <form class="auth-form" onsubmit="handleSignup(event)">
+        <label for="signupName" class="visually-hidden">Full name</label>
+        <input type="text" id="signupName" placeholder="Full Name" required>
+        <label for="signupEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="signupEmail" placeholder="Email Address" required>
+        <label for="signupPassword" class="visually-hidden">Password</label>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <label for="signupConfirmPassword" class="visually-hidden">Confirm password</label>
+        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+        <label class="robot-check"><input type="checkbox" id="signupRobot"> I'm not a robot</label>
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="social-auth">
+        <div class="or">or</div>
+        <button class="social-btn google-btn" onclick="socialSignup('google')">Sign up with Google</button>
+        <button class="social-btn facebook-btn" onclick="socialSignup('facebook')">Sign up with Facebook</button>
+      </div>
+      <div class="auth-switch">
+        Already have an account? <a href="#" onclick="switchToLogin()">Login here</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Our Motive ===== -->
+  <section class="our-motive fade-in delay-7">
+    <div class="motive-container">
+      <div class="motive-image">
+        <img src="image/coooofeee.jpg" alt="Our Motive">
+      </div>
+      <div class="motive-text">
+        <h2>Our Motive</h2>
+        <p>
+          “We’re proud to share Myanmar’s vibrant coffee story — from highland arabica blends to beloved local drinks — crafted with care and served with warmth.”
+        </p>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About Us (Creative) ===== -->
+  <section class="about-creative">
+    <div class="about-inner">
+      <div class="about-card">
+        <h3>Our Origin</h3>
+        <p>Born from a love of coffee and community, we roast in small batches and celebrate farmers across Myanmar and beyond.</p>
+      </div>
+      <div class="about-card">
+        <h3>Our Craft</h3>
+        <p>From pour-over to espresso, we obsess over details — grind, ratio, and roast curves — so your cup is always memorable.</p>
+      </div>
+      <div class="about-card">
+        <h3>Our Promise</h3>
+        <p>Honest sourcing, fresh roasts, and friendly service. You bring the stories; we’ll brew the moments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Ultra-Modern Footer ===== -->
+  <footer class="modern-footer">
+    <div class="footer-container">
+
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>📍 Bean Boutique, Yangon, Myanmar</p>
+        <p>📞 +95 123 456 789</p>
+        <p>📧 hello@beanboutique.com</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <!-- Interactive Map -->
+      <div class="footer-section">
+        <h3>Find Us</h3>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.062!2d96.1951!3d16.8661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c193f4e6e4e6b3%3A0x4d9b7a8b5c6d9e0f!2sYangon%2C%20Myanmar!5e0!3m2!1sen!2smm!4v1691234567890!5m2!1sen!2smm"
+            
+            height="200"
+            style="border:0; border-radius: 10px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Newsletter Signup -->
+      <div class="footer-section">
+        <h3>Stay Updated</h3>
+        <p>Join our newsletter for fresh brews and exclusive deals!</p>
+        <form class="newsletter-form">
+          <label for="newsletterEmailIndex" class="visually-hidden">Email address</label>
+          <input type="email" id="newsletterEmailIndex" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bean Boutique. All rights reserved. Made with ❤️ for coffee lovers.</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="discountToast" class="toast">🎉 You got 10% off your first order!</div>
+
+  <!-- ===== JS Popup & Authentication ===== -->
+  <script>
+    // Check authentication status on page load
+    window.onload = function() {
+      checkAuthStatus();
+      
+      if (!sessionStorage.getItem("popupClosed")) {
+        setTimeout(() => {
+          document.getElementById("popup").classList.add("active");
+        }, 2000);
+      }
+
+    // Simulated social auth (no backend)
+    function socialUserFromProvider(provider){
+      // In a real app you'd use the provider SDK. Here we simulate a user object.
+      const name = provider === 'google' ? 'Google User' : 'Facebook User';
+      const email = (provider + '_user@example.com');
+      return { name, email, password: provider + '_oauth' };
+    }
+    function ensureRegistered(user){
+      const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (!users.find(u => (u.email||'').toLowerCase() === user.email.toLowerCase())){
+        users.push(user);
+        localStorage.setItem('registeredUsers', JSON.stringify(users));
+      }
+    }
+    function finishLogin(user){
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      closeAuthModal('loginModal');
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      alert('Welcome, ' + user.name + '!');
+    }
+    function socialLogin(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    function socialSignup(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    // Expose to global for inline onclick handlers
+    window.socialLogin = socialLogin;
+    window.socialSignup = socialSignup;
+    };
+
+    function closePopup() {
+      document.getElementById("popup").classList.remove("active");
+      sessionStorage.setItem("popupClosed", "true");
+    }
+
+    // Authentication Functions
+    function checkAuthStatus() {
+      const currentUser = localStorage.getItem('currentUser');
+      const authButtons = document.getElementById('authButtons');
+      const userInfo = document.getElementById('userInfo');
+      const welcomeMessage = document.getElementById('welcomeMessage');
+
+      if (currentUser) {
+        const userData = JSON.parse(currentUser);
+        authButtons.classList.add('hidden');
+        userInfo.classList.remove('hidden');
+        welcomeMessage.textContent = `Welcome, ${userData.name}!`;
+      } else {
+        authButtons.classList.remove('hidden');
+        userInfo.classList.add('hidden');
+      }
+      // Reveal auth UI after state is applied (prevents flicker)
+      document.body.classList.add('auth-state-applied');
+    }
+
+    function startDiscountFlow() {
+      // Mark that user came from the discount popup
+      sessionStorage.setItem('discountFlow', 'true');
+      closePopup();
+      openSignupModal();
+    }
+
+    function showDiscountToast() {
+      const toast = document.getElementById('discountToast');
+      if (!toast) return;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.add('active');
+    }
+
+    function openSignupModal() {
+      document.getElementById('signupModal').classList.add('active');
+    }
+
+    function closeAuthModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    function switchToSignup() {
+      closeAuthModal('loginModal');
+      openSignupModal();
+    }
+
+    function switchToLogin() {
+      closeAuthModal('signupModal');
+      openLoginModal();
+    }
+
+    function handleLogin(event) {
+      event.preventDefault();
+      if (!document.getElementById('loginRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+      
+      // Get registered users from localStorage
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      
+      // Find user with matching credentials
+      const user = registeredUsers.find(u => u.email === email && u.password === password);
+      
+      if (user) {
+        // Login successful
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        closeAuthModal('loginModal');
+        checkAuthStatus();
+        // If discount flow was initiated, show discount toast once
+        if (sessionStorage.getItem('discountFlow') === 'true') {
+          sessionStorage.removeItem('discountFlow');
+          showDiscountToast();
+        } else {
+          alert('Login successful! Welcome back, ' + user.name + '!');
+        }
+      } else {
+        alert('Invalid email or password. Please try again.');
+      }
+    }
+
+    function handleSignup(event) {
+      event.preventDefault();
+      if (!document.getElementById('signupRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+      
+      // Validation
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+      
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long!');
+        return;
+      }
+      
+      // Get existing users
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      
+      // Check if email already exists
+      if (registeredUsers.find(u => u.email === email)) {
+        alert('An account with this email already exists!');
+        return;
+      }
+      
+      // Create new user
+      const newUser = { name, email, password };
+      registeredUsers.push(newUser);
+      
+      // Save to localStorage
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      if (sessionStorage.getItem('discountFlow') === 'true') {
+        sessionStorage.removeItem('discountFlow');
+        showDiscountToast();
+      } else {
+        alert('Account created successfully! Welcome to Bean Boutique, ' + name + '!');
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('cart');
+      checkAuthStatus();
+      alert('You have been logged out successfully!');
+    }
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+      
+      if (event.target === loginModal) {
+        closeAuthModal('loginModal');
+      }
+      if (event.target === signupModal) {
+        closeAuthModal('signupModal');
+      }
+    }
+    
+    // Close modals/popups on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        const popup = document.getElementById('popup');
+        if (loginModal && loginModal.classList.contains('active')) {
+          closeAuthModal('loginModal');
+        }
+        if (signupModal && signupModal.classList.contains('active')) {
+          closeAuthModal('signupModal');
+        }
+        if (popup && popup.classList.contains('active')) {
+          closePopup();
+        }
+      }
+    });
+  </script>
+  <script>
+    // ===== Simple Slider =====
+    (function(){
+      const slider = document.querySelector('.home-slider');
+      if (!slider) return;
+      const slides = Array.from(slider.querySelectorAll('.slide'));
+      const dots = Array.from(slider.querySelectorAll('.dot'));
+      const prevBtn = slider.querySelector('.slider-nav.prev');
+      const nextBtn = slider.querySelector('.slider-nav.next');
+      let idx = 0;
+      let timer;
+
+      function show(i){
+        idx = (i + slides.length) % slides.length;
+        slides.forEach((s, n) => s.classList.toggle('active', n === idx));
+        dots.forEach((d, n) => d.classList.toggle('active', n === idx));
+      }
+
+      function next(){ show(idx + 1); }
+      function prev(){ show(idx - 1); }
+
+      function start(){ timer = setInterval(next, 4000); }
+      function stop(){ clearInterval(timer); }
+
+      nextBtn.addEventListener('click', () => { stop(); next(); start(); });
+      prevBtn.addEventListener('click', () => { stop(); prev(); start(); });
+      dots.forEach((d, n) => d.addEventListener('click', () => { stop(); show(n); start(); }));
+
+      slider.addEventListener('mouseenter', stop);
+      slider.addEventListener('mouseleave', start);
+
+      show(0);
+      start();
+    })();
+  </script>
+
+<!-- Unified Auth UI Sync -->
+<script>
+  (function(){
+    function bbSyncAuthUI(){
+      const current = localStorage.getItem('currentUser');
+      const authButtons = document.getElementById('authButtons');
+      const userInfo = document.getElementById('userInfo');
+      const welcomeMessage = document.getElementById('welcomeMessage');
+      let userData = null;
+      if (current) { try { userData = JSON.parse(current); } catch(e){} }
+      if (userData) {
+        if (authButtons) authButtons.classList.add('hidden');
+        if (userInfo) userInfo.classList.remove('hidden');
+        if (welcomeMessage && userData.name) welcomeMessage.textContent = `Welcome, ${userData.name}!`;
+      } else {
+        if (authButtons) authButtons.classList.remove('hidden');
+        if (userInfo) userInfo.classList.add('hidden');
+      }
+      document.body.classList.add('auth-state-applied');
+    }
+    window.bbSyncAuthUI = bbSyncAuthUI;
+    window.checkAuthStatus = bbSyncAuthUI;
+    document.addEventListener('DOMContentLoaded', bbSyncAuthUI);
+    window.addEventListener('load', bbSyncAuthUI);
+    window.addEventListener('storage', function(e){
+      if (e.key === 'currentUser') bbSyncAuthUI();
+    });
+  })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Events & Workshops - Bean Boutique</title>
+  <link rel="stylesheet" href="style.css" >
+  <!-- Lightbox CSS for clickable zoomable images -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <script>document.addEventListener('DOMContentLoaded',function(){document.body.classList.add('auth-ready');});</script>
+</head>
+<body class="events-page">
+  <header>
+    <div class="logo">
+      <img src="image/logo8.png" alt="Bean Boutique Logo">
+      <span>Bean Boutique</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="coffee.html">Coffee Selection</a></li>
+        <li><a href="brewing.html">Brewing Equipment</a></li>
+        <li><a href="cart.html"> Cart</a></li>
+        <li><a href="event.html" class="active">Events & Workshops</a></li>
+        <li><a href="offers.html">Special Offers</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+    <!-- Burger before auth -->
+    <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <!-- Authentication Buttons -->
+    <div class="auth-buttons" id="authButtons">
+      <button class="auth-btn login-btn" onclick="openLoginModal()">Login</button>
+      <button class="auth-btn signup-btn" onclick="openSignupModal()">Sign Up</button>
+    </div>
+    <!-- User Info -->
+    <div class="user-info hidden" id="userInfo">
+      <span id="welcomeMessage">Welcome, User!</span>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Site Announcements Ticker -->
+  <div class="site-ticker" role="region" aria-label="Site announcements">
+    <div class="ticker-inner">
+      <div class="ticker-content">
+        <span class="ticker-seq">🎉 Join Events & Workshops — tastings, brewing classes, roastery tours. | 📅 Reserve your spot today. | ☕️ Discover coffee culture with us.</span>
+        <span class="ticker-seq">🎉 Join Events & Workshops — tastings, brewing classes, roastery tours. | 📅 Reserve your spot today. | ☕️ Discover coffee culture with us.</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Modern Hero -->
+    <section class="events-hero">
+      <div class="events-hero__inner">
+        <h1>Events & Workshops</h1>
+        <p>Taste. Learn. Connect. Join our tastings, brewing classes, and roastery sessions.</p>
+        <a href="#register" class="btn">Register Now</a>
+      </div>
+    </section>
+
+    <!-- Two-column Layout: Left = events grid, Right = sticky registration panel -->
+    <div id="events" class="events-layout">
+      <div class="events-grid">
+        <article class="event-card glass">
+          <a href="image/coffeetasting.jpg" data-lightbox="events" data-title="Coffee Tasting Session">
+            <img src="image/coffeetasting.jpg" alt="Coffee Tasting" >
+          </a>
+          <div class="event-info">
+            <div class="event-badges"><span class="badge">Tasting</span><span class="badge badge--soon">This Week</span></div>
+            <h3>Coffee Tasting Session</h3>
+            <p class="event-meta">Saturday, 10:00 AM – 11:30 AM • Bean Boutique Roastery, Yangon</p>
+            <p class="event-desc">Explore flavor profiles from different origins. Perfect for all levels.</p>
+            <a class="btn" href="#register" onclick="selectEvent('Coffee Tasting Session')">Register</a>
+            <div class="map-container" style="margin-top: 12px;">
+              <iframe
+                src="https://www.google.com/maps?q=16.8661,96.1951&hl=en&z=15&output=embed"
+                height="180"
+                style="border:0; border-radius: 10px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </article>
+
+        <article class="event-card glass">
+          <a href="image/brewingclass.jpg" data-lightbox="events" data-title="Brewing Class: Pour Over">
+            <img src="image/brewingclass.jpg" alt="Pour Over Class" >
+          </a>
+          <div class="event-info">
+            <div class="event-badges"><span class="badge">Workshop</span></div>
+            <h3>Brewing Class: Pour Over</h3>
+            <p class="event-meta">Sunday, 2:00 PM – 3:30 PM • Bean Boutique Roastery, Yangon</p>
+            <p class="event-desc">Hands-on session covering grind size, ratio, and pouring technique.</p>
+            <a class="btn" href="#register" onclick="selectEvent('Brewing Class: Pour Over')">Register</a>
+            <div class="map-container" style="margin-top: 12px;">
+              <iframe
+                src="https://www.google.com/maps?q=16.8661,96.1951&hl=en&z=15&output=embed"
+                height="180"
+                style="border:0; border-radius: 10px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </article>
+
+        <article class="event-card glass">
+          <a href="image/meettheroaster.jpg" data-lightbox="events" data-title="Meet the Roaster">
+            <img src="image/meettheroaster.jpg" alt="Meet the Roaster" >
+          </a>
+          <div class="event-info">
+            <div class="event-badges"><span class="badge">Meetup</span></div>
+            <h3>Meet the Roaster</h3>
+            <p class="event-meta">Next Friday, 5:00 PM – 6:30 PM • Bean Boutique Roastery, Yangon</p>
+            <p class="event-desc">Behind-the-scenes of sourcing, roast curves, and live Q&A with our head roaster. Tour the roastery and taste fresh batches.</p>
+            <a class="btn" href="#register" onclick="selectEvent('Meet the Roaster')">Register</a>
+            <div class="map-container" style="margin-top: 12px;">
+              <iframe
+                src="https://www.google.com/maps?q=16.8661,96.1951&hl=en&z=15&output=embed"
+                height="180"
+                style="border:0; border-radius: 10px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="event-card glass">
+          <a href="image/latteart.jpg" data-lightbox="events" data-title="Latte Art Throwdown">
+            <img src="image/latteart.jpg" alt="Latte Art Throwdown" >
+          </a>
+          <div class="event-info">
+            <div class="event-badges"><span class="badge">Competition</span><span class="badge badge--soon">New</span></div>
+            <h3>Latte Art Throwdown</h3>
+            <p class="event-meta">Saturday, 6:00 PM – 8:00 PM • Bean Boutique Roastery, Yangon</p>
+            <p class="event-desc">Baristas and coffee lovers compete and cheer on the most creative latte art. Free audience tasting and live commentary.</p>
+            <a class="btn" href="#register" onclick="selectEvent('Latte Art Throwdown')">Register</a>
+            <div class="map-container" style="margin-top: 12px;">
+              <iframe
+                src="https://www.google.com/maps?q=16.8661,96.1951&hl=en&z=15&output=embed"
+                height="180"
+                style="border:0; border-radius: 10px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <aside class="register-panel" id="register">
+        <div class="register-card glass">
+          <h3>Register Online</h3>
+          <p>Fill in your details to register for: <strong id="selectedEvent">Choose an event</strong></p>
+          <form action="#" method="post" class="event-form">
+            <div class="form-row">
+              <label for="evtFirstName" class="visually-hidden">First name</label>
+              <input type="text" id="evtFirstName" name="first_name" placeholder="First Name" required >
+              <label for="evtLastName" class="visually-hidden">Last name</label>
+              <input type="text" id="evtLastName" name="last_name" placeholder="Last Name" required >
+            </div>
+            <label for="evtEmail" class="visually-hidden">Email address</label>
+            <input type="email" id="evtEmail" name="email" placeholder="Email Address" required >
+            <button type="submit" class="btn">Submit</button>
+          </form>
+          <p class="form-note">Your registration will be saved to your profile.</p>
+        </div>
+      </aside>
+    </div>
+    </main>
+
+  
+  <!-- ===== Login Modal ===== -->
+  <div class="auth-modal" id="loginModal">
+    <div class="auth-modal-content">
+      <button class="auth-close-btn" onclick="closeAuthModal('loginModal')">✖</button>
+      <h2>Welcome Back!</h2>
+      <form class="auth-form" onsubmit="handleLogin(event)">
+        <label for="loginEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="loginEmail" placeholder="Email Address" required>
+        <label for="loginPassword" class="visually-hidden">Password</label>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <label class="robot-check"><input type="checkbox" id="loginRobot"> I'm not a robot</label>
+        <button type="submit">Login</button>
+      </form>
+      <div class="social-auth">
+        <div class="or">or</div>
+        <button class="social-btn google-btn" onclick="socialLogin('google')">Continue with Google</button>
+        <button class="social-btn facebook-btn" onclick="socialLogin('facebook')">Continue with Facebook</button>
+      </div>
+      <div class="auth-switch">
+        Don't have an account? <a href="#" onclick="switchToSignup()">Sign up here</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Signup Modal ===== -->
+  <div class="auth-modal" id="signupModal">
+    <div class="auth-modal-content">
+      <button class="auth-close-btn" onclick="closeAuthModal('signupModal')">✖</button>
+      <h2>Join Bean Boutique!</h2>
+      <form class="auth-form" onsubmit="handleSignup(event)">
+        <label for="signupName" class="visually-hidden">Full name</label>
+        <input type="text" id="signupName" placeholder="Full Name" required>
+        <label for="signupEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="signupEmail" placeholder="Email Address" required>
+        <label for="signupPassword" class="visually-hidden">Password</label>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <label for="signupConfirmPassword" class="visually-hidden">Confirm password</label>
+        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+        <label class="robot-check"><input type="checkbox" id="signupRobot"> I'm not a robot</label>
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="social-auth">
+        <div class="or">or</div>
+        <button class="social-btn google-btn" onclick="socialSignup('google')">Sign up with Google</button>
+        <button class="social-btn facebook-btn" onclick="socialSignup('facebook')">Sign up with Facebook</button>
+      </div>
+      <div class="auth-switch">
+        Already have an account? <a href="#" onclick="switchToLogin()">Login here</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Auth visibility on load
+    document.addEventListener('DOMContentLoaded', checkAuthStatus);
+    window.addEventListener('load', checkAuthStatus);
+    function checkAuthStatus() {
+      const currentUser = localStorage.getItem('currentUser');
+      const authButtons = document.getElementById('authButtons');
+      const userInfo = document.getElementById('userInfo');
+      const welcomeMessage = document.getElementById('welcomeMessage');
+      if (currentUser) {
+        try {
+          const userData = JSON.parse(currentUser);
+          authButtons.classList.add('hidden');
+          userInfo.classList.remove('hidden');
+          welcomeMessage.textContent = `Welcome, ${userData.name}!`;
+        } catch {
+          authButtons.classList.remove('hidden');
+          userInfo.classList.add('hidden');
+        }
+      } else {
+        authButtons.classList.remove('hidden');
+        userInfo.classList.add('hidden');
+      }
+      // Reveal auth UI after state is applied (prevents flicker)
+      document.body.classList.add('auth-state-applied');
+    }
+    function openLoginModal() { document.getElementById('loginModal').classList.add('active'); }
+    function openSignupModal() { document.getElementById('signupModal').classList.add('active'); }
+    function closeAuthModal(id) { document.getElementById(id).classList.remove('active'); }
+    function switchToSignup() { closeAuthModal('loginModal'); openSignupModal(); }
+    function switchToLogin() { closeAuthModal('signupModal'); openLoginModal(); }
+    function handleLogin(event) {
+      event.preventDefault();
+      if (!document.getElementById('loginRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      const user = registeredUsers.find(u => (u.email || '').toLowerCase() === email && u.password === password);
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        closeAuthModal('loginModal');
+        checkAuthStatus();
+        alert('Login successful! Welcome back, ' + user.name + '!');
+      } else {
+        alert('Invalid email or password. Please try again.');
+      }
+    }
+    function handleSignup(event) {
+      event.preventDefault();
+      if (!document.getElementById('signupRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+      if (password !== confirmPassword) { alert('Passwords do not match!'); return; }
+      if (password.length < 6) { alert('Password must be at least 6 characters long!'); return; }
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (registeredUsers.find(u => (u.email || '').toLowerCase() === email)) { alert('An account with this email already exists!'); return; }
+      const newUser = { name, email, password };
+      registeredUsers.push(newUser);
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      alert('Account created successfully! Welcome to Bean Boutique, ' + name + '!');
+    }
+    function logout() {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('cart');
+      checkAuthStatus();
+      alert('You have been logged out successfully!');
+    }
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+      if (event.target === loginModal) closeAuthModal('loginModal');
+      if (event.target === signupModal) closeAuthModal('signupModal');
+    }
+
+    // Close modals on Escape key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        if (loginModal && loginModal.classList.contains('active')) closeAuthModal('loginModal');
+        if (signupModal && signupModal.classList.contains('active')) closeAuthModal('signupModal');
+      }
+    });
+  </script>
+  <script>
+    // Selected event state
+    let currentSelectedEvent = null;
+    function selectEvent(title) {
+      const currentUser = localStorage.getItem('currentUser');
+      if (currentUser) {
+        // User is logged in, proceed with registration
+        currentSelectedEvent = title;
+        const el = document.getElementById('selectedEvent');
+        if (el) el.textContent = title;
+        // Scroll to the registration form smoothly
+        document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // User is not logged in, show login modal
+        openLoginModal();
+      }
+    }
+
+    // Helper: get and save registrations
+    function getRegistrations() {
+      try { return JSON.parse(localStorage.getItem('eventRegistrations') || '[]'); } catch { return []; }
+    }
+    function saveRegistrations(list) {
+      localStorage.setItem('eventRegistrations', JSON.stringify(list));
+    }
+
+    // Attach submit handler to first .event-form
+    (function initRegisterForm(){
+      const form = document.querySelector('.event-form');
+      if (!form) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const fd = new FormData(form);
+        const first = (fd.get('first_name')||'').toString().trim();
+        const last = (fd.get('last_name')||'').toString().trim();
+        const email = (fd.get('email')||'').toString().trim().toLowerCase();
+        const eventTitle = currentSelectedEvent || document.getElementById('selectedEvent')?.textContent || '';
+        if (!eventTitle || eventTitle === 'Choose an event') {
+          alert('Please choose an event from the list first.');
+          return;
+        }
+        const now = new Date().toISOString();
+        const currentUser = localStorage.getItem('currentUser');
+        let userEmail = null, userName = null;
+        if (currentUser) {
+          try {
+            const u = JSON.parse(currentUser);
+            userEmail = (u.email||'').toLowerCase();
+            userName = u.name || null;
+          } catch {}
+        }
+        const registrations = getRegistrations();
+        registrations.push({
+          first, last, email, eventTitle, createdAt: now, userEmail, userName
+        });
+        saveRegistrations(registrations);
+        // Also store last action for confirmation screen
+        localStorage.setItem('lastRegistration', JSON.stringify({eventTitle, first, last}));
+        // Redirect to profile
+        window.location.href = 'profile.html';
+      });
+    })();
+  </script>
+  <script>
+    // Simulated social auth (no backend)
+    function socialUserFromProvider(provider){
+      const name = provider === 'google' ? 'Google User' : 'Facebook User';
+      const email = (provider + '_user@example.com');
+      return { name, email, password: provider + '_oauth' };
+    }
+    function ensureRegistered(user){
+      const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (!users.find(u => (u.email||'').toLowerCase() === user.email.toLowerCase())){
+        users.push(user);
+        localStorage.setItem('registeredUsers', JSON.stringify(users));
+      }
+    }
+    function finishLogin(user){
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      document.getElementById('loginModal')?.classList.remove('active');
+      document.getElementById('signupModal')?.classList.remove('active');
+      checkAuthStatus();
+      alert('Welcome, ' + user.name + '!');
+    }
+    function socialLogin(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    function socialSignup(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+  </script>
+  <!-- ===== Ultra-Modern Footer ===== -->
+  <footer class="modern-footer">
+    <div class="footer-container">
+     
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>📍 Bean Boutique, Yangon, Myanmar</p>
+        <p>📞 +95 123 456 789</p>
+        <p>📧 hello@beanboutique.com</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <!-- Interactive Map -->
+      <div class="footer-section">
+        <h3>Find Us</h3>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.062!2d96.1951!3d16.8661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c193f4e6e4e6b3%3A0x4d9b7a8b5c6d9e0f!2sYangon%2C%20Myanmar!5e0!3m2!1sen!2smm!4v1691234567890!5m2!1sen!2smm"
+            height="200"
+            style="border:0; border-radius: 10px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Newsletter Signup -->
+      <div class="footer-section">
+        <h3>Stay Updated</h3>
+        <p>Join our newsletter for fresh brews and exclusive deals!</p>
+        <form class="newsletter-form">
+          <label for="newsletterEmailEvents" class="visually-hidden">Email address</label>
+          <input type="email" id="newsletterEmailEvents" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bean Boutique. All rights reserved. Made with ❤️ for coffee lovers.</p>
+    </div>
+  </footer>
+
+  <!-- ===== JS Popup & Authentication ===== -->
+  <script>
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.add('active');
+    }
+
+    function openSignupModal() {
+      document.getElementById('signupModal').classList.add('active');
+    }
+
+    function closeAuthModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    function switchToSignup() {
+      closeAuthModal('loginModal');
+      openSignupModal();
+    }
+
+    function switchToLogin() {
+      closeAuthModal('signupModal');
+      openLoginModal();
+    }
+
+    function handleLogin(event) {
+      event.preventDefault();
+      if (!document.getElementById('loginRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      const user = registeredUsers.find(u => (u.email || '').toLowerCase() === email && u.password === password);
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        closeAuthModal('loginModal');
+        checkAuthStatus();
+        alert('Login successful! Welcome back, ' + user.name + '!');
+      } else {
+        alert('Invalid email or password. Please try again.');
+      }
+    }
+
+    function handleSignup(event) {
+      event.preventDefault();
+      if (!document.getElementById('signupRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+      if (password !== confirmPassword) { alert('Passwords do not match!'); return; }
+      if (password.length < 6) { alert('Password must be at least 6 characters long!'); return; }
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (registeredUsers.find(u => (u.email || '').toLowerCase() === email)) { alert('An account with this email already exists!'); return; }
+      const newUser = { name, email, password };
+      registeredUsers.push(newUser);
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      alert('Account created successfully! Welcome to Bean Boutique, ' + name + '!');
+    }
+
+    function logout() {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('cart');
+      checkAuthStatus();
+      alert('You have been logged out successfully!');
+    }
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+      if (event.target === loginModal) closeAuthModal('loginModal');
+      if (event.target === signupModal) closeAuthModal('signupModal');
+    }
+
+    // Simulated social auth (no backend)
+    function socialUserFromProvider(provider){
+      const name = provider === 'google' ? 'Google User' : 'Facebook User';
+      const email = (provider + '_user@example.com');
+      return { name, email, password: provider + '_oauth' };
+    }
+    function ensureRegistered(user){
+      const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (!users.find(u => (u.email||'').toLowerCase() === user.email.toLowerCase())){
+        users.push(user);
+        localStorage.setItem('registeredUsers', JSON.stringify(users));
+      }
+    }
+    function finishLogin(user){
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      document.getElementById('loginModal')?.classList.remove('active');
+      document.getElementById('signupModal')?.classList.remove('active');
+      checkAuthStatus();
+      alert('Welcome, ' + user.name + '!');
+    }
+    function socialLogin(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    function socialSignup(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+  </script>
+
+
+<script>
+lightbox.option({
+  'resizeDuration': 200,
+  'wrapAround': true
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Special Offers & Subscriptions - Bean Boutique</title>
+  <link rel="stylesheet" href="style.css" >
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  </head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="image/logo8.png" alt="Bean Boutique Logo">
+      <span>Bean Boutique</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="coffee.html">Coffee Selection</a></li>
+        <li><a href="brewing.html">Brewing Equipment</a></li>
+        <li><a href="cart.html"> Cart</a></li>
+        <li><a href="event.html">Events & Workshops</a></li>
+        <li><a href="offers.html" class="active">Special Offers</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('active')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="auth-buttons" id="authButtons">
+      <button class="auth-btn login-btn" onclick="openLoginModal()">Login</button>
+      <button class="auth-btn signup-btn" onclick="openSignupModal()">Sign Up</button>
+    </div>
+    <div class="user-info hidden" id="userInfo">
+      <span id="welcomeMessage">Welcome, User!</span>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Site Announcements Ticker -->
+  <div class="site-ticker" role="region" aria-label="Site announcements">
+    <div class="ticker-inner">
+      <div class="ticker-content">
+        <span class="ticker-seq">💥 Special Offers live now — bundles, freebies, and member-only drops. | 📦 Subscribe for fresh beans delivered monthly.  </span>
+        <span class="ticker-seq">💥 Special Offers live now — bundles, freebies, and member-only drops. | 📦 Subscribe for fresh beans delivered monthly. </span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero -->
+    <section class="offers-hero">
+      <div class="offers-hero__inner">
+        <h1>Special Offers & Subscriptions</h1>
+        <p>Enjoy exclusive promotions and flexible subscriptions for fresh coffee delivered regularly.</p>
+        <a class="btn" href="#subscriptions">Explore Subscriptions</a>
+      </div>
+    </section>
+
+    
+
+    <!-- Promotions Grid -->
+    <section class="offers-section">
+      <h2 class="section-title">Current Promotions</h2>
+      <div class="offers-grid">
+        <article class="offer-card">
+          <div class="offer-card__badge">Limited</div>
+          <h3>Free Mug With 2 Bags</h3>
+          <p>Buy any two 250g bags and get a Bean Boutique ceramic mug free.</p>
+          <a href="coffee.html" class="btn">Shop Coffee</a>
+        </article>
+        <article class="offer-card">
+          <div class="offer-card__badge badge--gold">Bundle</div>
+          <h3>Brewer + Beans</h3>
+          <p>Save when you bundle a brewer with any 2 bags of beans.</p>
+          <a href="brewing.html" class="btn">Browse Equipment</a>
+        </article>
+        <article class="offer-card">
+          <div class="offer-card__badge badge--green">Member</div>
+          <h3>Member-Only Drops</h3>
+          <p>Exclusive access to small-batch seasonal releases for subscribers.</p>
+          <a href="offers.html" class="btn">Become a Subscriber</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Subscriptions -->
+    <section class="subs-section" id="subscriptions">
+      <h2 class="section-title">Subscription Plans</h2>
+      <p class="section-subtitle">Choose a plan that fits your routine. Modify or pause anytime.</p>
+      <div class="plan-grid">
+        <article class="plan-card">
+          <h3>Starter</h3>
+          <p class="price">$14/mo</p>
+          <ul class="plan-list">
+            <li>1 bag/month (250g)</li>
+            <li>Free shipping</li>
+            <li>Member-only offers</li>
+          </ul>
+          <button class="btn" onclick="selectPlan('Starter')">Subscribe</button>
+        </article>
+        <article class="plan-card popular">
+          <div class="ribbon">Most Popular</div>
+          <h3>Enthusiast</h3>
+          <p class="price">$26/mo</p>
+          <ul class="plan-list">
+            <li>2 bags/month (2 × 250g)</li>
+            <li>Free shipping + sampling</li>
+            <li>Priority access to new releases</li>
+          </ul>
+          <button class="btn" onclick="selectPlan('Enthusiast')">Subscribe</button>
+        </article>
+        <article class="plan-card">
+          <h3>Family</h3>
+          <p class="price">$38/mo</p>
+          <ul class="plan-list">
+            <li>3 bags/month (3 × 250g)</li>
+            <li>Free shipping + sampler pack</li>
+            <li>VIP invites to events</li>
+          </ul>
+          <button class="btn" onclick="selectPlan('Family')">Subscribe</button>
+        </article>
+      </div>
+      <div class="subs-cta">
+        <p>No commitments. Pause or cancel anytime from your Profile.</p>
+        <a href="profile.html" class="btn">Manage Subscriptions</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <button class="faq-question">Can I pause or cancel my subscription?</button>
+        <div class="faq-answer">
+          <p>Yes, you can pause or cancel anytime. Just visit your Profile and manage your subscription.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">When are bags roasted and shipped?</button>
+        <div class="faq-answer">
+          <p>We roast fresh daily and ship within 24 hours to ensure maximum freshness.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I change my plan later?</button>
+        <div class="faq-answer">
+          <p>Absolutely. You can upgrade or downgrade your plan at any time from your Profile.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="modern-footer">
+    <div class="footer-container">
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>📍 Bean Boutique, Yangon, Myanmar</p>
+        <p>📞 +95 123 456 789</p>
+        <p>📧 hello@beanboutique.com</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <!-- Interactive Map -->
+      <div class="footer-section">
+        <h3>Find Us</h3>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.062!2d96.1951!3d16.8661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c193f4e6e4e6b3%3A0x4d9b7a8b5c6d9e0f!2sYangon%2C%20Myanmar!5e0!3m2!1sen!2smm!4v1691234567890!5m2!1sen!2smm"
+            height="200"
+            style="border:0; border-radius: 10px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Newsletter Signup -->
+      <div class="footer-section">
+        <h3>Stay Updated</h3>
+        <p>Join our newsletter for fresh brews and exclusive deals!</p>
+        <form class="newsletter-form">
+          <label for="newsletterEmailOffers" class="visually-hidden">Email address</label>
+          <input type="email" id="newsletterEmailOffers" placeholder="Your Email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bean Boutique. All rights reserved. Made with ❤️ for coffee lovers.</p>
+    </div>
+  </footer>
+
+  <!-- Auth Modals -->
+  <div class="auth-modal" id="loginModal">
+    <div class="auth-modal-content">
+      <button class="auth-close-btn" onclick="closeAuthModal('loginModal')">✖</button>
+      <h2>Welcome Back!</h2>
+      <form class="auth-form" onsubmit="handleLogin(event)">
+        <label for="loginEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="loginEmail" placeholder="Email Address" required>
+        <label for="loginPassword" class="visually-hidden">Password</label>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <label class="robot-check"><input type="checkbox" id="loginRobot"> I'm not a robot</label>
+        <button type="submit">Login</button>
+      </form>
+      <div class="social-auth">
+        <div class="or">or</div>
+        <button class="social-btn google-btn" onclick="socialLogin('google')">Continue with Google</button>
+        <button class="social-btn facebook-btn" onclick="socialLogin('facebook')">Continue with Facebook</button>
+      </div>
+      <div class="auth-switch">
+        Don't have an account? <a href="#" onclick="switchToSignup()">Sign up here</a>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="auth-modal" id="signupModal">
+    <div class="auth-modal-content">
+      <button class="auth-close-btn" onclick="closeAuthModal('signupModal')">✖</button>
+      <h2>Join Bean Boutique!</h2>
+      <form class="auth-form" onsubmit="handleSignup(event)">
+        <label for="signupName" class="visually-hidden">Full name</label>
+        <input type="text" id="signupName" placeholder="Full Name" required>
+        <label for="signupEmail" class="visually-hidden">Email address</label>
+        <input type="email" id="signupEmail" placeholder="Email Address" required>
+        <label for="signupPassword" class="visually-hidden">Password</label>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <label for="signupConfirmPassword" class="visually-hidden">Confirm password</label>
+        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" required>
+        <label class="robot-check"><input type="checkbox" id="signupRobot"> I'm not a robot</label>
+        <button type="submit">Sign Up</button>
+      </form>
+      <div class="social-auth">
+        <div class="or">or</div>
+        <button class="social-btn google-btn" onclick="socialSignup('google')">Sign up with Google</button>
+        <button class="social-btn facebook-btn" onclick="socialSignup('facebook')">Sign up with Facebook</button>
+      </div>
+      <div class="auth-switch">
+        Already have an account? <a href="#" onclick="switchToLogin()">Login here</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openLoginModal() { document.getElementById('loginModal').classList.add('active'); }
+    function openSignupModal() { document.getElementById('signupModal').classList.add('active'); }
+    function closeAuthModal(id) { document.getElementById(id).classList.remove('active'); }
+    function switchToSignup() { closeAuthModal('loginModal'); openSignupModal(); }
+    function switchToLogin() { closeAuthModal('signupModal'); openLoginModal(); }
+
+    function checkAuthStatus() {
+      const currentUser = localStorage.getItem('currentUser');
+      const authButtons = document.getElementById('authButtons');
+      const userInfo = document.getElementById('userInfo');
+      const welcomeMessage = document.getElementById('welcomeMessage');
+      if (currentUser) {
+        try {
+          const userData = JSON.parse(currentUser);
+          authButtons.classList.add('hidden');
+          userInfo.classList.remove('hidden');
+          if (welcomeMessage) welcomeMessage.textContent = `Welcome, ${userData.name}!`;
+        } catch {
+          authButtons.classList.remove('hidden');
+          userInfo.classList.add('hidden');
+        }
+      } else {
+        authButtons.classList.remove('hidden');
+        userInfo.classList.add('hidden');
+      }
+      // Mark that auth UI can be revealed (prevents flicker)
+      document.body.classList.add('auth-state-applied');
+    }
+
+    function handleLogin(event) {
+      event.preventDefault();
+      if (!document.getElementById('loginRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      const user = registeredUsers.find(u => (u.email || '').toLowerCase() === email && u.password === password);
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        closeAuthModal('loginModal');
+        checkAuthStatus();
+        alert('Login successful! Welcome back, ' + user.name + '!');
+      } else {
+        alert('Invalid email or password. Please try again.');
+      }
+    }
+
+    function handleSignup(event) {
+      event.preventDefault();
+      if (!document.getElementById('signupRobot').checked) { alert("Please confirm you're not a robot."); return; }
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+      const password = document.getElementById('signupPassword').value;
+      const confirmPassword = document.getElementById('signupConfirmPassword').value;
+      if (password !== confirmPassword) { alert('Passwords do not match!'); return; }
+      if (password.length < 6) { alert('Password must be at least 6 characters long!'); return; }
+      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (registeredUsers.find(u => (u.email || '').toLowerCase() === email)) { alert('An account with this email already exists!'); return; }
+      const newUser = { name, email, password };
+      registeredUsers.push(newUser);
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      alert('Account created successfully! Welcome to Bean Boutique, ' + name + '!');
+    }
+
+    function logout() { localStorage.removeItem('currentUser'); localStorage.removeItem('cart'); checkAuthStatus(); alert('You have been logged out successfully!'); }
+
+    function selectPlan(planName) {
+      const currentUser = localStorage.getItem('currentUser');
+      if (!currentUser) { openSignupModal(); return; }
+      try {
+        const u = JSON.parse(currentUser);
+        const subs = JSON.parse(localStorage.getItem('subscriptions') || '[]');
+        const entry = { email: u.email, name: u.name, plan: planName, createdAt: new Date().toISOString() };
+        subs.push(entry);
+        localStorage.setItem('subscriptions', JSON.stringify(subs));
+        alert('Subscribed to ' + planName + ' plan! You can manage it from your Profile.');
+      } catch {
+        openSignupModal();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', checkAuthStatus);
+    window.addEventListener('load', checkAuthStatus);
+
+    // Close modals when clicking outside
+    window.onclick = function(event) {
+      const loginModal = document.getElementById('loginModal');
+      const signupModal = document.getElementById('signupModal');
+      if (event.target === loginModal) closeAuthModal('loginModal');
+      if (event.target === signupModal) closeAuthModal('signupModal');
+    }
+
+    // Close auth modals on Escape key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        const loginModal = document.getElementById('loginModal');
+        const signupModal = document.getElementById('signupModal');
+        if (loginModal && loginModal.classList.contains('active')) closeAuthModal('loginModal');
+        if (signupModal && signupModal.classList.contains('active')) closeAuthModal('signupModal');
+      }
+    });
+
+    // Simulated social auth (no backend)
+    function socialUserFromProvider(provider){
+      const name = provider === 'google' ? 'Google User' : 'Facebook User';
+      const email = (provider + '_user@example.com');
+      return { name, email, password: provider + '_oauth' };
+    }
+    function ensureRegistered(user){
+      const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+      if (!users.find(u => (u.email||'').toLowerCase() === user.email.toLowerCase())){
+        users.push(user);
+        localStorage.setItem('registeredUsers', JSON.stringify(users));
+      }
+    }
+    function finishLogin(user){
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      closeAuthModal('loginModal');
+      closeAuthModal('signupModal');
+      checkAuthStatus();
+      alert('Welcome, ' + user.name + '!');
+    }
+    function socialLogin(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+    function socialSignup(provider){ const user = socialUserFromProvider(provider); ensureRegistered(user); finishLogin(user); }
+
+    // Modern Accordion FAQ
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      question.addEventListener('click', () => {
+        // Close other active items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+          }
+        });
+        // Toggle current item
+        item.classList.toggle('active');
+        if (item.classList.contains('active')) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          answer.style.maxHeight = null;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
